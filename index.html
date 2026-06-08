@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ZenFlow — Yoga & Pilates en Córdoba</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  *{font-family:'Inter',sans-serif} body{background:#0a0a0a;color:#f0f0f0}
+  :root{--accent:#84cc16;--accent2:#65a30d}
+  .glass{background:rgba(255,255,255,.04);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08)}
+  .accent{color:var(--accent)}
+  .accent-bg{background:var(--accent)}
+  .btn-primary{background:var(--accent);color:#000;font-weight:700;transition:all .2s;border-radius:12px;padding:14px 28px}
+  .btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(132,204,22,.5)}
+  .card{background:#111;border:1px solid #1f1f1f;border-radius:20px;transition:all .3s}
+  .card:hover{border-color:rgba(132,204,22,.4);transform:translateY(-4px)}
+  .pulse-dot{display:inline-block;width:8px;height:8px;border-radius:9999px;background:#22c55e;position:relative}
+  .pulse-dot::after{content:'';position:absolute;inset:0;border-radius:9999px;background:#22c55e;animation:pulse-ring 1.6s cubic-bezier(0.215,0.61,0.355,1) infinite}
+  @keyframes pulse-ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.8);opacity:0}}
+  .heat-cell{aspect-ratio:1/1;border-radius:6px;background:#1c1c1c;border:1px solid #262626}
+  .fade-in{animation:fadeIn .4s ease both}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  ::-webkit-scrollbar{width:10px} ::-webkit-scrollbar-track{background:#0a0a0a} ::-webkit-scrollbar-thumb{background:#262626;border-radius:8px}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 glass">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl accent-bg flex items-center justify-center text-black font-extrabold text-lg">ZF</div>
+      <span class="font-bold text-lg tracking-tight">ZenFlow <span class="text-gray-500 font-normal hidden sm:inline">· Yoga & Pilates</span></span>
+    </div>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+      <a href="#horario" class="hover:text-white transition">Horario en vivo</a>
+      <a href="#racha" class="hover:text-white transition">Tu racha</a>
+      <a href="#clases" class="hover:text-white transition">Clases</a>
+      <a href="#opiniones" class="hover:text-white transition">Opiniones</a>
+    </div>
+    <a href="#horario" class="btn-primary text-sm">Reservar clase</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="pt-40 pb-24 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <span class="inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide text-gray-300 mb-6">🧘 Estudio de barrio en Córdoba · Plazas limitadas cada día</span>
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-6">
+      Reserva tu clase de yoga en <span class="accent">segundos</span>, sin llamadas ni esperas
+    </h1>
+    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+      Mira las plazas disponibles en tiempo real, reserva desde el móvil y lleva el control de tu constancia semana a semana. Así de simple debería ser cuidarte.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+      <a href="#horario" class="btn-primary w-full sm:w-auto text-center">Ver horario y reservar</a>
+      <a href="#racha" class="w-full sm:w-auto text-center px-7 py-[14px] rounded-xl border border-gray-700 hover:border-gray-500 transition font-semibold">Ver mi racha de constancia</a>
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-gray-400">
+      <div class="flex items-center gap-2"><span class="pulse-dot"></span> <span><strong class="text-white" id="plazas-libres-stat">14</strong> plazas libres hoy</span></div>
+      <div class="flex items-center gap-2"><span class="accent text-base">★</span> 4,9/5 en Google (212 reseñas)</div>
+      <div class="flex items-center gap-2"><span class="accent text-base">📍</span> Barrio del Cerro de los Gamos, Córdoba</div>
+    </div>
+  </div>
+</header>
+
+<!-- FEATURE: HORARIO EN VIVO -->
+<section id="horario" class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="accent text-sm font-bold tracking-widest uppercase">Horario en vivo</span>
+      <h2 class="text-4xl md:text-5xl font-extrabold mt-3 mb-4">Mira las plazas disponibles ahora mismo</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Cada clase muestra las plazas reales que quedan. Reserva con un clic y el contador se actualiza al instante — para ti y para el resto del estudio.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Clase 1 -->
+      <article class="card p-6" data-clase="vinyasa">
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-xl font-bold mb-1">Vinyasa Flow</h3>
+            <p class="text-sm text-gray-400">Lunes y miércoles · 19:00 – 20:00 · con Marta Reyes</p>
+          </div>
+          <span class="text-3xl">🌊</span>
+        </div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-wide text-gray-500">Plazas restantes</span>
+          <span class="text-sm font-bold text-amber-400" data-urgencia>¡Solo <span data-contador>2</span> plazas!</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="btn-primary flex-1 text-sm" data-reservar data-max="2">Reservar plaza</button>
+          <span class="text-xs text-gray-500" data-confirmacion></span>
+        </div>
+      </article>
+
+      <!-- Clase 2 -->
+      <article class="card p-6" data-clase="yin">
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-xl font-bold mb-1">Yin Yoga</h3>
+            <p class="text-sm text-gray-400">Martes y jueves · 20:15 – 21:15 · con Laura Gómez</p>
+          </div>
+          <span class="text-3xl">🌙</span>
+        </div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-wide text-gray-500">Plazas restantes</span>
+          <span class="text-sm font-bold text-emerald-400" data-urgencia><span data-contador>9</span> plazas libres</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="btn-primary flex-1 text-sm" data-reservar data-max="9">Reservar plaza</button>
+          <span class="text-xs text-gray-500" data-confirmacion></span>
+        </div>
+      </article>
+
+      <!-- Clase 3 -->
+      <article class="card p-6" data-clase="pilates">
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-xl font-bold mb-1">Pilates Reformer</h3>
+            <p class="text-sm text-gray-400">Lunes, miércoles y viernes · 09:30 – 10:30 · con Sandra Ortiz</p>
+          </div>
+          <span class="text-3xl">🤸</span>
+        </div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-wide text-gray-500">Plazas restantes</span>
+          <span class="text-sm font-bold text-red-400" data-urgencia>¡Solo <span data-contador>1</span> plaza!</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="btn-primary flex-1 text-sm" data-reservar data-max="1">Reservar plaza</button>
+          <span class="text-xs text-gray-500" data-confirmacion></span>
+        </div>
+      </article>
+
+      <!-- Clase 4 -->
+      <article class="card p-6" data-clase="mindfulness">
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-xl font-bold mb-1">Mindfulness & Respiración</h3>
+            <p class="text-sm text-gray-400">Viernes · 18:30 – 19:15 · con Marta Reyes</p>
+          </div>
+          <span class="text-3xl">🌬️</span>
+        </div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-wide text-gray-500">Plazas restantes</span>
+          <span class="text-sm font-bold text-emerald-400" data-urgencia><span data-contador>6</span> plazas libres</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="btn-primary flex-1 text-sm" data-reservar data-max="6">Reservar plaza</button>
+          <span class="text-xs text-gray-500" data-confirmacion></span>
+        </div>
+      </article>
+
+    </div>
+    <p class="text-center text-xs text-gray-600 mt-8">* Los datos de plazas se simulan en esta demo para mostrar cómo se sentiría el sistema real de reservas de ZenFlow.</p>
+  </div>
+</section>
+
+<!-- FEATURE: RACHA DE CONSTANCIA -->
+<section id="racha" class="py-20 px-6 bg-[#0d0d0d] border-y border-[#1a1a1a]">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="accent text-sm font-bold tracking-widest uppercase">Tu progreso</span>
+      <h2 class="text-4xl md:text-5xl font-extrabold mt-3 mb-4">Tu racha de constancia</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Cada clase a la que asistes enciende un día en tu mapa de calor. Así de fácil ves tu evolución de un vistazo — y te dan ganas de no romper la racha.</p>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-8 items-center">
+      <div class="md:col-span-3 card p-6">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm font-semibold text-gray-300">Últimas 4 semanas</span>
+          <div class="flex items-center gap-2 text-xs text-gray-500">
+            <span>Menos</span>
+            <span class="heat-cell w-4 h-4" style="background:rgba(132,204,22,.15)"></span>
+            <span class="heat-cell w-4 h-4" style="background:rgba(132,204,22,.45)"></span>
+            <span class="heat-cell w-4 h-4" style="background:rgba(132,204,22,.75)"></span>
+            <span class="heat-cell w-4 h-4 accent-bg"></span>
+            <span>Más</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-7 gap-2 mb-3" id="heatmap"></div>
+        <div class="grid grid-cols-7 gap-2 text-[10px] text-gray-600 text-center uppercase tracking-wide">
+          <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+        </div>
+      </div>
+
+      <div class="md:col-span-2 flex flex-col gap-6">
+        <div class="card p-8 text-center">
+          <p class="text-5xl mb-2">🔥</p>
+          <p class="text-3xl font-extrabold accent mb-1">4 semanas seguidas</p>
+          <p class="text-sm text-gray-400">Asistiendo a clase al menos 2 veces por semana</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <p class="text-sm font-semibold mb-1">💪 ¡Estás a una semana de tu récord personal!</p>
+          <p class="text-xs text-gray-400">Tu mejor racha hasta ahora fue de 5 semanas, en marzo. Una clase más esta semana y lo igualas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATÁLOGO / SERVICIOS -->
+<section id="clases" class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="accent text-sm font-bold tracking-widest uppercase">Nuestras disciplinas</span>
+      <h2 class="text-4xl md:text-5xl font-extrabold mt-3 mb-4">Un estilo para cada momento de tu semana</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Da igual si buscas energía por la mañana o calma antes de dormir: en ZenFlow tienes sitio.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card p-6">
+        <span class="text-3xl">🌊</span>
+        <h3 class="font-bold mt-4 mb-2">Vinyasa Flow</h3>
+        <p class="text-sm text-gray-400">Secuencias dinámicas que conectan respiración y movimiento. Ideal para soltar tensión tras el trabajo.</p>
+      </div>
+      <div class="card p-6">
+        <span class="text-3xl">🌙</span>
+        <h3 class="font-bold mt-4 mb-2">Yin Yoga</h3>
+        <p class="text-sm text-gray-400">Posturas suaves y mantenidas que trabajan en profundidad. Perfecto para desconectar de verdad.</p>
+      </div>
+      <div class="card p-6">
+        <span class="text-3xl">🤸</span>
+        <h3 class="font-bold mt-4 mb-2">Pilates Reformer</h3>
+        <p class="text-sm text-gray-400">Trabajo de fuerza y postura con máquina, en grupos reducidos. Notarás la diferencia en dos semanas.</p>
+      </div>
+      <div class="card p-6">
+        <span class="text-3xl">🌬️</span>
+        <h3 class="font-bold mt-4 mb-2">Mindfulness & Respiración</h3>
+        <p class="text-sm text-gray-400">Técnicas guiadas de respiración y meditación para cerrar la semana con la mente en calma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRUEBA SOCIAL -->
+<section id="opiniones" class="py-20 px-6 bg-[#0d0d0d] border-y border-[#1a1a1a]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="accent text-sm font-bold tracking-widest uppercase">Lo que dicen de nosotras</span>
+      <h2 class="text-4xl md:text-5xl font-extrabold mt-3">Personas reales, constancia real</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mb-14">
+      <div class="card p-6">
+        <p class="accent text-lg mb-3">★★★★★</p>
+        <p class="text-gray-300 text-sm mb-4">"Reservo desde el móvil mientras voy en el bus y ya está. Ver las plazas en directo me ha hecho ir muchísimo más a clase."</p>
+        <p class="text-sm font-semibold">Cristina M. <span class="text-gray-500 font-normal">· alumna desde 2023</span></p>
+      </div>
+      <div class="card p-6">
+        <p class="accent text-lg mb-3">★★★★★</p>
+        <p class="text-gray-300 text-sm mb-4">"Lo de la racha es adictivo en el buen sentido. Llevo dos meses sin faltar ni una semana, algo que jamás me había pasado."</p>
+        <p class="text-sm font-semibold">Javier P. <span class="text-gray-500 font-normal">· alumno desde 2024</span></p>
+      </div>
+      <div class="card p-6">
+        <p class="accent text-lg mb-3">★★★★★</p>
+        <p class="text-gray-300 text-sm mb-4">"Antes tenía que llamar y esperar a que me devolvieran la llamada. Ahora reservo y listo, en menos de un minuto."</p>
+        <p class="text-sm font-semibold">Beatriz S. <span class="text-gray-500 font-normal">· alumna desde 2022</span></p>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div><p class="text-3xl md:text-4xl font-extrabold accent">8</p><p class="text-xs text-gray-400 mt-1">clases semanales</p></div>
+      <div><p class="text-3xl md:text-4xl font-extrabold accent">340+</p><p class="text-xs text-gray-400 mt-1">alumnas y alumnos activos</p></div>
+      <div><p class="text-3xl md:text-4xl font-extrabold accent">4,9</p><p class="text-xs text-gray-400 mt-1">valoración media</p></div>
+      <div><p class="text-3xl md:text-4xl font-extrabold accent">6</p><p class="text-xs text-gray-400 mt-1">años en el barrio</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="py-24 px-6">
+  <div class="max-w-4xl mx-auto text-center card p-12 md:p-16">
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Tu próxima clase está a un clic</h2>
+    <p class="text-gray-400 max-w-xl mx-auto mb-8">Elige tu horario, reserva tu plaza y empieza a construir tu racha hoy mismo. Sin esperas, sin llamadas, sin excusas.</p>
+    <a href="#horario" class="btn-primary inline-block">Ver horario y reservar ahora</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-6 py-10 border-t border-[#1a1a1a]">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg accent-bg flex items-center justify-center text-black font-extrabold text-sm">ZF</div>
+      <span>ZenFlow · Estudio de Yoga & Pilates · Córdoba</span>
+    </div>
+    <p>© 2026 ZenFlow. Demo de sitio web creada por <span class="accent font-semibold">PuntoZero</span>.</p>
+  </div>
+</footer>
+
+<script>
+  // ----- Heatmap de constancia (7 columnas x 4 filas) -----
+  const heatmap = document.getElementById('heatmap');
+  // 0 = apagado, 1-3 = intensidad de asistencia (opacidad creciente)
+  const semanas = [
+    [0,2,0,3,1,0,0],
+    [1,0,2,0,3,1,0],
+    [0,1,3,0,2,0,1],
+    [2,0,1,3,0,2,0],
+  ];
+  const opacidades = { 1: .25, 2: .55, 3: 1 };
+  semanas.flat().forEach((nivel) => {
+    const cell = document.createElement('div');
+    cell.className = 'heat-cell';
+    if (nivel > 0) {
+      cell.style.background = `rgba(132,204,22,${opacidades[nivel]})`;
+      cell.style.borderColor = 'rgba(132,204,22,.5)';
+    }
+    heatmap.appendChild(cell);
+  });
+
+  // ----- Reservas en vivo -----
+  let plazasLibresGlobal = 18; // para el contador del hero
+  const statHero = document.getElementById('plazas-libres-stat');
+
+  document.querySelectorAll('[data-reservar]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('[data-clase]');
+      const contadorEl = card.querySelector('[data-contador]');
+      const urgenciaEl = card.querySelector('[data-urgencia]');
+      const confirmacionEl = card.querySelector('[data-confirmacion]');
+      let restantes = parseInt(contadorEl.textContent, 10);
+
+      if (restantes <= 0 || btn.disabled) return;
+
+      restantes -= 1;
+      contadorEl.textContent = restantes;
+
+      // Actualiza estilo de urgencia según plazas restantes
+      urgenciaEl.classList.remove('text-emerald-400', 'text-amber-400', 'text-red-400');
+      if (restantes === 0) {
+        urgenciaEl.innerHTML = 'Completo';
+        urgenciaEl.classList.add('text-red-400');
+        btn.textContent = 'Completo';
+        btn.disabled = true;
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+        btn.style.background = '#262626';
+        btn.style.color = '#888';
+      } else if (restantes === 1) {
+        urgenciaEl.innerHTML = '¡Solo <span data-contador>' + restantes + '</span> plaza!';
+        urgenciaEl.classList.add('text-red-400');
+      } else if (restantes <= 3) {
+        urgenciaEl.innerHTML = '¡Solo <span data-contador>' + restantes + '</span> plazas!';
+        urgenciaEl.classList.add('text-amber-400');
+      } else {
+        urgenciaEl.innerHTML = '<span data-contador>' + restantes + '</span> plazas libres';
+        urgenciaEl.classList.add('text-emerald-400');
+      }
+
+      // Confirmación simulada
+      confirmacionEl.textContent = '✅ ¡Reservada!';
+      confirmacionEl.classList.add('fade-in', 'text-emerald-400', 'font-semibold');
+      setTimeout(() => {
+        confirmacionEl.classList.remove('fade-in');
+        confirmacionEl.textContent = 'Te esperamos en clase 🧘';
+        confirmacionEl.classList.remove('text-emerald-400');
+        confirmacionEl.classList.add('text-gray-500');
+        confirmacionEl.classList.remove('font-semibold');
+      }, 2200);
+
+      // Actualiza el contador global del hero
+      if (plazasLibresGlobal > 0) {
+        plazasLibresGlobal -= 1;
+        statHero.textContent = plazasLibresGlobal;
+      }
+    });
+  });
+</script>
+</body>
+</html>
